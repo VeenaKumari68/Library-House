@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FAQ's</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="images/logo.png" sizes="200x200">
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>document.getElementsByTagName("html")[0].className += " js";</script>
+
+<style>
+body {
+  font-family: "Trebuchet MS";
+   box-sizing: border-box;
+  margin: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.header{
+     width: 100%;
+     font-size: 18px;
+     color: #ffffff;
+     background-color: rgba(0,0,0,.1);
+     position:fixed ;
+     top: 0;
+     left: 0;
+     z-index: 1;
+     padding: 0px;
+}
+  .clr{
+    clear: both;
+}
+ /* @media screen and (mix-blend-mode: difference) {
+    .header {
+      background-color: white;
+      color: #595959;
+      mix-blend-mode: difference;
+    }
+
+  } */
+ .container2{
+  display: inline-flex;
+  margin: auto 10px;
+  padding: 12px;
+ }
+ .logo{
+    float: left;
+    margin: 0 20px;
+}
+
+.logo img{
+    width: 30%;
+    margin: 0 60px;
+   
+}
+.navbar{
+    float: right;
+    margin:auto 10px ; 
+    margin-left: 330px;
+    margin-right: 0px;
+    padding:auto 10px ;
+}
+
+.navbar a{
+    color:white;
+    overflow: auto;
+    text-decoration: none;
+    text-align: center;
+    padding: 20px;
+    font-size: 25px;
+    font-family: "Trebuchet MS";
+}
+.navbar a:hover {
+  color: grey;
+  background-color: #ffffff;
+  border-radius: 4px ;
+}
+ 
+.dropdown {
+  display: inline-flex;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  border: none;
+  outline: none;
+  width: 100%;
+  background-color: inherit;
+  font-family: inherit;
+  margin:auto 10px;
+  color:white;
+  overflow: hidden;
+  text-decoration: none;
+  text-align: center;
+  padding: auto 20px;
+  font-size: 25px;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  color: grey;
+  background-color: #ffffff;
+  border-radius: 4px ;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.25);
+  margin-top: 64px;
+  margin-left: 9px;
+  padding: auto 20px;
+  min-width: 190px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: white;
+  font-size: 20px;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 90px;
+  text-align: center;
+  background-color:grey;
+  color: white;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/*FAQS*/
+.accordion {
+  background-color:#e0e0e0;
+  color: #444444;
+  margin:20px 20px 0 250px;
+  margin-bottom: 0;
+  cursor: pointer;
+  padding: 17px;
+  width: 60%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 18px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #FFDB58;
+}
+
+.accordion:after {
+  content: '\002B';
+  color: #777777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.panel {
+  padding: 0 15px;
+  width: 60%;
+  margin:10px 20px 0 250px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  font-size: 15px;
+  transition: max-height 0.2s ease-out;
+}
+
+/*contact form*/
+#contact-form {
+  max-width: 1208px;
+  max-width: 75.5rem;
+  margin: 0 auto;
+  display: inline;
+}
+#contact, label, input[name="submit"] {
+  position: relative;
+  display: inline-table;
+}
+label > span, input, textarea, button {
+  box-sizing: border-box;
+}
+label {
+  display: block;
+  margin-left: 150px;
+
+}
+label > span {
+  display: none;
+}
+input, textarea, button {
+  width: 70%;
+  padding: 0.5em;
+  border: none;
+  font: 300 100%/1.2 Ubuntu, sans-serif;
+}
+input[type="text"], input[type="email"], input[type="country"], textarea {
+  margin: 0 0 1em;
+  border: 1px solid #ccc;
+  outline: none;
+}
+input.invalid, textarea.invalid {
+  border-color: #d5144d;
+}
+textarea {
+  height: 6em;
+}
+input[type="submit"], button {
+  width: 50%;
+  background: #ffd500;
+  color: #333333;
+}
+input[type="submit"]:hover, button:hover {
+  background: #91b36f;
+}
+.map img{
+  float: right;
+  margin: 0.5% ;
+  margin-left: 4%;
+  box-shadow:  5px 5px 10px 5px rgba(0,0,0,0.5);
+  display: inline;
+}
+@media screen and (min-width: 30em) {
+  #contact-form h2 {
+    margin-left: 26.3736%;
+    font-size: 2em;
+    line-height: 1.5;
+  }
+  label > span {
+    vertical-align: top;
+    display: inline-block;
+    width: 26.3736%;
+    padding: 0.5em;
+    border: 1px solid transparent;
+    text-align: right;
+  }
+  input, textarea, button {
+    width: 60%;
+    line-height: 1.5;
+  }
+  textarea {
+    height: 10em;
+  }
+  input[type="submit"], button {
+    margin-left: 17%;
+  }
+}
+@media screen and (min-width: 48em) {
+  #contact-form {
+    text-align: justify;
+    line-height: 0;
+  }
+  #contact-form:after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+  }
+  #contact-form h2 {
+    margin-left: 17.2661%;
+  }
+  #contact-form form, #contact-form aside {
+    vertical-align: top;
+    display: inline-block;
+    width: 65.4676%;
+    text-align: left;
+    line-height: 1.5;
+  }
+  #contact-form aside {
+    width: 30.9353%;
+  }
+}
+.fa {
+  padding: 5px;
+  font-size: 20px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px ;
+  border-radius: 3px;
+}
+
+</style>
+</head>
+<body>
+
+  <header class="header" style="background-color: rgba(1,1,0,.1);">
+    <div class="container2"> 
+    <img class="logo" src="images/logo.png" alt="logo" width="80px" height="70px">
+   <nav class="navbar">
+     <a href="index.html">HOME</a>   
+     <a href="book.html">SPECIAL EDITION</a>   
+     <div class="dropdown">
+    <button class="dropbtn">CATEGORY
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="file.html">SOFTWARE</a>
+      <a href="file2.html">HARDWARE</a>
+      <a href="file5.html">ENGLISH</a>
+       <a href="file3.html">LANGUAGE</a>
+      <a href="file4.html">MATHEMATICS</a>
+    </div>
+  </div> 
+  <a href="faq.html">CONTACT</a>
+     <a href="logn.html">REGISTER</a>         
+    </nav>
+   </div>
+</header>
+<img src="images/faqs.jpg" height="400px" width="100%">
+<h2 align="center">Frequently Asked Questions</h2>
+   <br><br>
+<section>
+<button class="accordion"> What hours is the the Library open ?</button>
+<div class="panel">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+</div>
+
+<button class="accordion">Can I purchase a digital version of the book ?</button>
+<div class="panel">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+</div>
+
+<button class="accordion">How many books does this Library have ? </button>
+<div class="panel">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+</div>
+<button class="accordion">What type of books this Library have ?</button>
+<div class="panel">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+</div> 
+
+<button class="accordion">What are the steps to buy a book from this Library ?</button>
+<div class="panel">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+</div>
+</section>
+<br><br>
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
+  <h2 align="center">For Further Query, Contact Us</h2>
+  <br><br><br>
+
+    <section id="contact-form">
+  <form id="contact" name="contact" accept-charset="utf-8">
+    <label><input name="name" type="text" placeholder="Name"/></label>
+    <label><input name="email" type="email" placeholder="Email"/></label>
+    <label><input name="country" type="country" placeholder="country" /></label>
+        
+    <label><textarea name="message" placeholder="Message"></textarea></label>
+    <input name="submit" type="submit" value="Send"/>
+  </form>
+  <aside>
+<img src="images/Googlemap.jpg" width="450px" height="380px" id="map">
+</aside>
+</section>
+
+
+</body>
+</html>

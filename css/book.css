@@ -1,0 +1,236 @@
+
+   @import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
+*, ::before, ::after { box-sizing: border-box; }
+body{
+  box-sizing: border-box;
+    font-family: "Trebuchet MS";
+    margin: 0;
+    text-align: center;
+}
+hr {
+  border:none;
+  background:#e3e3e3;
+  height:1px;
+/*   width:60%;
+  display:block;
+  margin-left:0; */
+}
+.header{
+     width: 100%;
+     font-size: 18px;
+     color: #ffffff;
+     background-color: rgba(0,0,0,.1);
+     position:fixed;
+     top: 0;
+     left: 0;
+     z-index: 1;
+     padding: 0px;
+}
+  .clr{
+    clear: both;
+}
+ 
+ .containernav{
+  display: inline-flex;
+  margin: auto 10px;
+  padding: 12px;
+ }
+ .logo{
+    float: left;
+    margin: 0 20px;
+}
+
+.logo img{
+    width: 30%;
+    margin: 0 60px;
+   
+}
+.navbar{
+    float: right;
+    margin:auto 10px ; 
+    margin-left: 310px;
+    margin-right: 0px;
+    padding:auto 10px ;
+}
+
+.navbar a{
+    color:white;
+    overflow: auto;
+    text-decoration: none;
+    text-align: center;
+    padding: 20px;
+    font-size: 25px;
+    font-family: "Trebuchet MS";
+
+}
+.navbar a:hover {
+  color: grey;
+  background-color: #ffffff;
+  border-radius: 4px ;
+}
+ 
+.dropdown {
+  display: inline-flex;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  border: none;
+  outline: none;
+  background-color: inherit;
+  font-family: inherit;
+  margin:auto 10px;
+  color:white;
+  overflow: hidden;
+  text-decoration: none;
+  text-align: center;
+  padding: auto 20px;
+  font-size: 25px;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  color: grey;
+  background-color: #ffffff;
+  border-radius: 4px ;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.25);
+  margin-top: 64px;
+  margin-left: 9px;
+  padding:auto 20px;
+  min-width: 210px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: white;
+  font-size: 20px;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.container-search {
+  background-image: url("../images/bg.jpeg");
+  width: 100%;
+  height: 70%; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.book-search input[type="search"]{
+    width: 30%;
+    padding: 5px;
+    margin-top: 15%;
+    margin-left: 100px auto ;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+}
+
+.container {
+  max-width:1000px;
+  max-height: 1350px;
+  margin: 1em auto; 
+  background:#FFF; 
+  padding:30px;
+  border-radius:5px;
+  background-color: #ffffff;
+}
+.productcont {
+  display:flex; 
+}
+.product {
+  padding:1em; 
+  border:1px solid #E0E4CC; 
+  margin-right:1em; 
+  border-radius:5px;
+  background-color:#e3e3e3; 
+}
+.addtocart{
+	background-color: #FFDB58;
+	border:1px solid #FFDB58;
+}
+.cart-container {
+  border:1px solid #E0E4CC;
+  border-radius:5px;
+  margin-top:1em;
+  padding:1em;
+}
+button, input[type="submit"] { 
+    border:1px solid #FA6900; 
+    color:#fff; 
+    background: #F38630; 
+    padding:0.6em 1em;
+    font-size:1em; 
+    line-height:1; 
+    border-radius: 1.2em;
+    transition: color 0.2s ease-in-out, background 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+button:hover, button:focus, button:active, input[type="submit"]:hover, 
+input[type="submit"]:focus, input[type="submit"]:active {
+    background: #FFDB58;
+    border-color:#FFDB58;
+    color:#000000;
+    outline: none;
+    cursor: pointer;
+}
+table {
+  margin-bottom:1em;
+  border-collapse:collapse;
+}
+table td, table th {
+  text-align:left;
+  padding:0.25em 1em;
+  border-bottom:1px solid #E0E4CC;
+}
+#carttotals {
+  margin-right:0;
+  margin-left:auto;
+}
+.cart-buttons {
+  width:auto;
+  margin-right:0;
+  margin-left:auto;
+  display:flex;
+  justify-content:flex-end;
+  padding:1em 0;
+}
+#emptycart {
+  margin-right:1em;
+}
+table td:nth-last-child(1) {
+  text-align:right;
+}
+.message {
+  border-width: 1px 0px;
+  border-style:solid;
+  border-color:#A7DBD8;
+  color:#679996;
+  padding:0.5em 0;
+  margin:1em 0;
+}
+.fa {
+  padding: 5px;
+  font-size: 20px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px ;
+  border-radius: 3px;
+}

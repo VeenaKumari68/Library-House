@@ -1,0 +1,489 @@
+<html>
+<head>
+	 <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="icon" type="image/png" href="images/logo.png" sizes="200x200">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <title>Special Edition</title>
+</head>
+
+<body>
+<header class="header" style="background-color: rgba(1,1,0,.1);">
+    <div class="containernav"> 
+    <img class="logo" src="images/logo.png" alt="logo" width="80px" height="70px">
+   <nav class="navbar">
+     <a href="index.html">HOME</a>   
+     <a href="book.html">SPECIAL EDITION</a>   
+     <div class="dropdown">
+    <button class="dropbtn">CATEGORY
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="file.html">SOFTWARE</a>
+      <a href="file2.html">HARDWARE</a>
+      <a href="file5.html">ENGLISH</a>
+       <a href="file3.html">LANGUAGE</a>
+      <a href="file.html">MATHEMATICS</a>
+    </div>
+  </div> 
+  <a href="faq.html">CONTACT</a>
+     <a href="logn.html">REGISTER</a>         
+    </nav>
+   </div>
+</header>
+ <section class="book-search text-center">
+        <div class="container-search">
+            <form action="search.html" method="POST">
+            <input type="search" name="search" placeholder="Search for book...">       
+            </form>
+        </div>
+</section>
+
+ <div class="container"> 
+   <div id="alerts"></div>
+   <h2>SPECIAL EDITION</h2>
+<div class="productcont">
+        <div class="product">
+          <img class="cover" src="images/1.jpg" width="150px" height="200px"><br>
+            <h3 class="productname">Five Queen's Road</h3>
+             <cite class="author">By Sorayya Khan</cite>
+            <p>>Dina Lal, a Hindu resident of Lahore, refuses to leave his city when so many of his community are fleeing. Against the better judgment of his wife, he purchases Five Queen's Road from a departing Englishman.</p>
+            <p class="price">585</p>
+            <button class="addtocart">Add To Cart</button>
+        </div>
+
+        <div class="product">
+          <img class="cover" src="images/2.jpg" width="150px" height="200px"><br>
+            <h3 class="productname">The Kite Runner</h3>
+            <cite class="author">By Khaled Hosseini</cite>
+            <p>The novel is about two boys growing up in Afghanistan and how their friendship shapes the rest of their lives. As a boy, Amir witnesses the rape of his servant and illegitimate half-brother, Hassan.</p>
+            <p class="price">899</p>
+            <button class="addtocart">Add To Cart</button>
+        </div>
+        <div class="product">
+          <img class="cover" src="images/3.jpg" width="150px" height="200px"><br>
+            <h3 class="productname">The Little Prince</h3>
+            <cite class="author">By Antoine de Saint-Exupéry</cite>
+            <p>A little prince meets a pilot stranded in the desert. The prince tells the pilot that he was born on an asteroid and he recounts many strange encounters from his travels.</p>
+            <p class="price">799</p>
+            <button class="addtocart">Add To Cart</button>
+        </div>
+        </div>
+        <br>
+    <div class="productcont">
+        <div class="product">
+          <img class="cover" src="images/6.jpg" width="150px" height="200px"><br>
+            <h3 class="productname">Burnt Shadows</h3>
+            <cite class="author">By Kamila Shamsie</cite>
+            <p>In the final days of the World War II in Japan, following to India on the brink of partition in 1947, to Pakistan in the early 1980s then to New York after 9/11 and Afghanistan in the wake of the ensuing US bombing.</p>
+            <p class="price">505</p>
+            <button class="addtocart">Add To Cart</button>
+        </div>
+        <div class="product">
+          <img class="cover" src="images/5.jpg" width="150px" height="200px"><br>
+            <h3 class="productname">The Fault In Our Stars</h3>
+            <cite class="author">By John Green</cite>
+            <p>The story of Hazel Grace Lancaster, a 16 year old girl who has had cancer for three years, and Augustus 'Gus' Waters, a 17 year old boy who's now in remission, and once had a tumour in his leg.</p>
+            <p class="price">850</p>
+            <button class="addtocart">Add To Cart</button>
+        </div>
+        <div class="product">
+          <img class="cover" src="images/4.jpeg" width="150px" height="200px"><br>
+            <h3 class="productname">Harry Potter</h3>
+            <cite class="author">By J. K. Rowling</cite>
+            <p>The novels chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger and Ron Weasley, all of whom are students at Hogwarts School of Witchcraft and Wizardry. </p>
+            <p class="price">459</p>
+            <button class="addtocart">Add To Cart</button>
+        </div>
+        </div>
+        <div class="cart-container">
+          <h2>Cart</h2>
+          <table>
+            <thead>
+              <tr>
+              <th><strong>Book Name</strong></th>
+              <th><strong>Price</strong></th>
+            </tr>
+            </thead>
+            <tbody id="carttable">
+            </tbody>
+          </table>
+          <hr>
+          <table id="carttotals">
+            <tr>
+              <td><strong>Product</strong></td>
+              <td><strong>Total</strong></td>
+            </tr>
+            <tr>
+              <td>x <span id="itemsquantity">0</span></td>
+             
+              <td>Rs.<span id="total">0</span></td>
+            </tr></table>
+
+            
+          <div class="cart-buttons">  
+            <button id="emptycart">Empty Cart</button>
+            <button id="checkout"><a href="order.html" style="text-decoration: none; color: white">  Checkout </a></button>
+          </div>
+        </div>
+</div>
+
+<script>
+  /* get cart total from session on load */
+updateCartTotal();
+
+/* button event listeners */
+document.getElementById("emptycart").addEventListener("click", emptyCart);
+var btns = document.getElementsByClassName('addtocart');
+for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener('click', function() {addToCart(this);});
+}
+
+/* ADD TO CART functions */
+
+function addToCart(elem) {
+    //init
+    var sibs = [];
+    var getprice;
+    var getproductName;
+    var cart = [];
+     var stringCart;
+    //cycles siblings for product info near the add button
+    while(elem = elem.previousSibling) {
+        if (elem.nodeType === 3) continue; // text node
+        if(elem.className == "price"){
+            getprice = elem.innerText;
+        }
+        if (elem.className == "productname") {
+            getproductName = elem.innerText;
+        }
+        sibs.push(elem);
+    }
+    //create product object
+    var product = {
+        productname : getproductName,
+        price : getprice
+    };
+    //convert product data to JSON for storage
+    var stringProduct = JSON.stringify(product);
+    /*send product data to session storage */
+    
+    if(!sessionStorage.getItem('cart')){
+        //append product JSON object to cart array
+        cart.push(stringProduct);
+        //cart to JSON
+        stringCart = JSON.stringify(cart);
+        //create session storage cart item
+        sessionStorage.setItem('cart', stringCart);
+        addedToCart(getproductName);
+        updateCartTotal();
+    }
+    else {
+        //get existing cart data from storage and convert back into array
+       cart = JSON.parse(sessionStorage.getItem('cart'));
+        //append new product JSON object
+        cart.push(stringProduct);
+        //cart back to JSON
+        stringCart = JSON.stringify(cart);
+        //overwrite cart data in sessionstorage 
+        sessionStorage.setItem('cart', stringCart);
+        addedToCart(getproductName);
+        updateCartTotal();
+    }
+}
+/* Calculate Cart Total */
+function updateCartTotal(){
+    //init
+    var total = 0;
+    var price = 0;
+    var items = 0;
+    var productname = "";
+    var carttable = "";
+    if(sessionStorage.getItem('cart')) {
+        //get cart data & parse to array
+        var cart = JSON.parse(sessionStorage.getItem('cart'));
+        //get no of items in cart 
+        items = cart.length;
+        //loop over cart array
+        for (var i = 0; i < items; i++){
+            //convert each JSON product in array back into object
+            var x = JSON.parse(cart[i]);
+            //get property value of price
+            price = parseFloat(x.price.split('PKR')[0]);
+            productname = x.productname;
+            //add price to total
+            carttable += "<tr><td>" + productname + "</td><td>" + x.price.split('')[0]+ x.price.split('')[1]+ x.price.split('')[2] + "</td></tr>";
+            total += price;
+        }
+        
+    }
+    //update total on website HTML
+    document.getElementById("total").innerHTML = total.toFixed(0);
+    //insert saved products to cart table
+    document.getElementById("carttable").innerHTML = carttable;
+    //update items in cart on website HTML
+    document.getElementById("itemsquantity").innerHTML = items;
+}
+//user feedback on successful add
+function addedToCart(pname) {
+  var message = pname + " was added to the cart";
+  var alerts = document.getElementById("alerts");
+  alerts.innerHTML = message;
+  if(!alerts.classList.contains("message")){
+     alerts.classList.add("message");
+  }
+}
+/* User Manually empty cart */
+function emptyCart() {
+    //remove cart session storage object & refresh cart totals
+    if(sessionStorage.getItem('cart')){
+        sessionStorage.removeItem('cart');
+        updateCartTotal();
+      //clear message and remove class style
+      var alerts = document.getElementById("alerts");
+      alerts.innerHTML = "";
+      if(alerts.classList.contains("message")){
+          alerts.classList.remove("message");
+      }
+    }
+}
+</script>
+
+<style>
+   @import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
+*, ::before, ::after { box-sizing: border-box; }
+body{
+  box-sizing: border-box;
+    font-family: "Trebuchet MS";
+    margin: 0;
+    text-align: center;
+}
+hr {
+  border:none;
+  background:#e3e3e3;
+  height:1px;
+/*   width:60%;
+  display:block;
+  margin-left:0; */
+}
+.header{
+     width: 100%;
+     font-size: 18px;
+     color: #ffffff;
+     background-color: rgba(0,0,0,.1);
+     position:fixed;
+     top: 0;
+     left: 0;
+     z-index: 1;
+     padding: 0px;
+}
+  .clr{
+    clear: both;
+}
+ 
+ .containernav{
+  display: inline-flex;
+  margin: auto 10px;
+  padding: 12px;
+ }
+ .logo{
+    float: left;
+    margin: 0 20px;
+}
+
+.logo img{
+    width: 30%;
+    margin: 0 60px;
+   
+}
+.navbar{
+    float: right;
+    margin:auto 10px ; 
+    margin-left: 310px;
+    margin-right: 0px;
+    padding:auto 10px ;
+}
+
+.navbar a{
+    color:white;
+    overflow: auto;
+    text-decoration: none;
+    text-align: center;
+    padding: 20px;
+    font-size: 25px;
+    font-family: "Trebuchet MS";
+
+}
+.navbar a:hover {
+  color: grey;
+  background-color: #ffffff;
+  border-radius: 4px ;
+}
+ 
+.dropdown {
+  display: inline-flex;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  border: none;
+  outline: none;
+  background-color: inherit;
+  font-family: inherit;
+  margin:auto 10px;
+  color:white;
+  overflow: hidden;
+  text-decoration: none;
+  text-align: center;
+  padding: auto 20px;
+  font-size: 25px;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  color: grey;
+  background-color: #ffffff;
+  border-radius: 4px ;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.25);
+  margin-top: 64px;
+  margin-left: 9px;
+  padding:auto 20px;
+  min-width: 210px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: white;
+  font-size: 20px;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.container-search {
+  background-image: url("images/bg.jpeg");
+  width: 100%;
+  height: 70%; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.book-search input[type="search"]{
+    width: 30%;
+    padding: 5px;
+    margin-top: 15%;
+    margin-left: 100px auto ;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+}
+
+.container {
+  max-width: 1000px; 
+  margin: 1em auto; 
+  background:#FFF; 
+  padding:30px;
+  border-radius:5px;
+  background-color: #ffffff;
+}
+.productcont {
+  display: flex; 
+}
+.product {
+  padding:1em; 
+  border:1px solid #E0E4CC; 
+  margin-right:1em; 
+  border-radius:5px;
+  background-color:#e3e3e3; 
+}
+.addtocart{
+	background-color: #FFDB58;
+	border:1px solid #FFDB58;
+}
+.cart-container {
+  border:1px solid #E0E4CC;
+  border-radius:5px;
+  margin-top:1em;
+  padding:1em;
+}
+button, input[type="submit"] { 
+    border:1px solid #FA6900; 
+    color:#fff; 
+    background: #F38630; 
+    padding:0.6em 1em;
+    font-size:1em; 
+    line-height:1; 
+    border-radius: 1.2em;
+    transition: color 0.2s ease-in-out, background 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+button:hover, button:focus, button:active, input[type="submit"]:hover, input[type="submit"]:focus, input[type="submit"]:active {
+    background: #FFDB58;
+    border-color:#FFDB58;
+    color:#000000;
+    outline: none;
+    cursor: pointer;
+}
+table {
+  margin-bottom:1em;
+  border-collapse:collapse;
+}
+table td, table th {
+  text-align:left;
+  padding:0.25em 1em;
+  border-bottom:1px solid #E0E4CC;
+}
+#carttotals {
+  margin-right:0;
+  margin-left:auto;
+}
+.cart-buttons {
+  width:auto;
+  margin-right:0;
+  margin-left:auto;
+  display:flex;
+  justify-content:flex-end;
+  padding:1em 0;
+}
+#emptycart {
+  margin-right:1em;
+}
+table td:nth-last-child(1) {
+  text-align:right;
+}
+.message {
+  border-width: 1px 0px;
+  border-style:solid;
+  border-color:#A7DBD8;
+  color:#679996;
+  padding:0.5em 0;
+  margin:1em 0;
+}
+.fa {
+  padding: 5px;
+  font-size: 20px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px ;
+  border-radius: 3px;
+}
+
+</style>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<?php include('../university/config/constants.php'); ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OrderForm</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/order.css">
+    <link rel="icon" type="image/png" href="images/logo.png" sizes="200x200">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="container">
+  <div class="title">
+      <h2>Product Order Form</h2>
+  </div>
+<div class="d-flex">
+  <form action="" method="">
+    <label>
+      <span class="fname">Full Name <span class="required">*</span></span>
+      <input type="text" name="fname">
+    </label>
+    <label>
+      <span>Email Address <span class="required">*</span></span>
+      <input type="email" name="email"> 
+    </label>
+    <label>
+      <span>Full Address <span class="required">*</span></span>
+      <input type="text" name="houseadd">
+    </label>
+    <label>
+      <span>Town / City <span class="required">*</span></span>
+      <input type="text" name="city"> 
+    </label>
+    <label>
+      <span>Postcode / ZIP <span class="required">*</span></span>
+      <input type="text" name="city"> 
+    </label>
+    <label>
+      <span>Phone <span class="required">*</span></span>
+      <input type="tel" name="city"> 
+    </label>
+    
+  </form>
+  <div class="Yorder">
+    <table id="carttotals">
+            <tr>
+              <td><strong>Items</strong></td>
+              <td><strong>Total</strong></td>
+            </tr>
+            <tr>
+              <td>x <span id="itemsquantity">2</span></td>
+             
+              <td>Rs.<span id="total">0</span></td>
+            </tr></table><br>
+    <div>
+      <input type="radio" name="dbt" value="dbt" checked> Direct Bank Transfer
+    </div>
+    <div>
+      <input type="radio" name="dbt" value="cd"> Cash on Delivery
+    </div>
+    <div>
+      <input type="radio" name="dbt" value="cd"> Easy Paisa <span>
+      
+      </span>
+    </div>
+    <div id="confirm">
+      <span style="font-size: 30px;">&#9989;</span><br>
+         <div class="message">Your Order has been Placed Successfully ! <br>Kindly Wait for confirm Message.</div>
+         <br><br>
+            <button class="yes" onclick=" window.location = 'book.php';"> OK</button>
+         </div>
+    <button type="button" value="Click Me" onclick="functionAlert();">Place Order</button>
+  </div><!-- Yorder -->
+ </div>
+ </div>
+<script>
+         function functionAlert(msg, myYes) {
+            var confirmBox = $("#confirm");
+            confirmBox.find(".message").text(msg);
+            confirmBox.find(".yes").unbind().click(function() {
+               confirmBox.hide();
+            });
+            confirmBox.find(".yes").click(myYes);
+            confirmBox.show();
+         }
+</script>
+
+        <style>
+         #confirm {
+            display: none;
+            background-color: #F3F5F6;
+            color: #000000;
+            border: 2px ;
+             font-family: "Trebuchet MS";
+            box-shadow: 5px 5px 20px 5px rgba(0,0,0,0.3);
+            position: absolute;
+            width: 400px;
+            height: 200px;
+            left: 0;
+            top:10;
+            bottom:10;
+            margin-top: -190px;
+            margin-left: 430px;
+            padding: 10px;
+            box-sizing: border-box;
+            text-align: center;
+            transition: all 5s ease-in-out;
+         }
+         #confirm button {
+            background-color: #008CBA;
+            color: white;
+            display: inline-block;
+            border-radius: 2px ;
+            padding: 5px;
+            text-align: center;
+            width: 100px;
+            cursor: pointer;
+         }
+         #confirm .message {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 17px;
+            font-weight: 800px;
+            color: black;
+         }
+
+      </style>
+
+
+<script>
+  /* get cart total from session on load */
+updateCartTotal();
+
+/* button event listeners */
+document.getElementById("emptycart").addEventListener("click", emptyCart);
+var btns = document.getElementsByClassName('addtocart');
+for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener('click', function() {addToCart(this);});
+}
+
+/* ADD TO CART functions */
+
+function addToCart(elem) {
+    //init
+    var sibs = [];
+    var getprice;
+    var getproductName;
+    var cart = [];
+     var stringCart;
+    //cycles siblings for product info near the add button
+    while(elem = elem.previousSibling) {
+        if (elem.nodeType === 3) continue; // text node
+        if(elem.className == "price"){
+            getprice = elem.innerText;
+        }
+        if (elem.className == "productname") {
+            getproductName = elem.innerText;
+        }
+        sibs.push(elem);
+    }
+    //create product object
+    var product = {
+        productname : getproductName,
+        price : getprice
+    };
+    //convert product data to JSON for storage
+    var stringProduct = JSON.stringify(product);
+    /*send product data to session storage */
+    
+    if(!sessionStorage.getItem('cart')){
+        //append product JSON object to cart array
+        cart.push(stringProduct);
+        //cart to JSON
+        stringCart = JSON.stringify(cart);
+        //create session storage cart item
+        sessionStorage.setItem('cart', stringCart);
+        addedToCart(getproductName);
+        updateCartTotal();
+    }
+    else {
+        //get existing cart data from storage and convert back into array
+       cart = JSON.parse(sessionStorage.getItem('cart'));
+        //append new product JSON object
+        cart.push(stringProduct);
+        //cart back to JSON
+        stringCart = JSON.stringify(cart);
+        //overwrite cart data in sessionstorage 
+        sessionStorage.setItem('cart', stringCart);
+        addedToCart(getproductName);
+        updateCartTotal();
+    }
+}
+/* Calculate Cart Total */
+function updateCartTotal(){
+    //init
+    var total = 0;
+    var price = 0;
+    var items = 0;
+    var productname = "";
+    var carttable = "";
+    if(sessionStorage.getItem('cart')) {
+        //get cart data & parse to array
+        var cart = JSON.parse(sessionStorage.getItem('cart'));
+        //get no of items in cart 
+        items = cart.length;
+        //loop over cart array
+        for (var i = 0; i < items; i++){
+            //convert each JSON product in array back into object
+            var x = JSON.parse(cart[i]);
+            //get property value of price
+            price = parseFloat(x.price.split('PKR')[0]);
+            productname = x.productname;
+            //add price to total
+            carttable += "<tr><td>" + productname + "</td><td>" + x.price.split('')[0]+ x.price.split('')[1]+ x.price.split('')[2] + "</td></tr>";
+            total += price;
+        }
+        
+    }
+    //update total on website HTML
+    document.getElementById("total").innerHTML = total.toFixed(0);
+    //insert saved products to cart table
+    document.getElementById("carttable").innerHTML = carttable;
+    //update items in cart on website HTML
+    document.getElementById("itemsquantity").innerHTML = items;
+}
+
+</script>
+
+</body>
+</html>

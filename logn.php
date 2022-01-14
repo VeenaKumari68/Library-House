@@ -1,0 +1,164 @@
+<?php include('../university/config/constants.php'); ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Login Form</title>
+	<link rel="icon" type="image/png" href="images/logo.png" sizes="200x200">
+	
+</head>
+<body>
+	<div class="container">
+				<h2 style="color=white" align="center">Log In</h2>
+		<form class="login_form" action="index.php" method="post" name="form" onsubmit="return validated()">
+			<div class="font"></div>
+			<input autocomplete="off" type="text" name="email" placeholder="Email">
+			<div id="email_error">Please fill up your Email</div>
+			<div class="font font2"></div>
+			<input type="password" name="password" placeholder="Password">
+			<div id="pass_error">Please fill up your Password</div>
+			<button type="submit">Login</button>
+
+
+			<div id="container">
+    		<a href="../university/re.html" style="margin-right:10px;">Reset Password?</a>
+    		<a href="../university/for.html" style="margin-left:15px; ">Forget Password</a>
+    		<br><br><br><br>
+            To create account, Please<a href="sgnup.php">&nbsp;Sign Up</a>
+            </div>
+
+		</form>
+	</div>	
+	<style>
+		*{
+	padding: 0;
+	margin: 0;
+	color: black
+}
+body{
+	background:rgba(44,62,80,0.8);
+	background: url(images/bgimg.jpg) no-repeat;
+	background-size: cover;
+	font-family: "Trebuchet MS";
+	color: #ffffff;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	font-family: sans-serif;
+}
+.container{
+	position: relative;
+	margin-top: 100px;
+	width: 340px;
+	height: 430px;
+	background:rgba(44,62,80,0.8);
+	border-radius: 5px;
+}
+.logo{
+	margin-top: -40px;
+	margin-left: 130px;
+}
+.login_form{
+	padding: 20px 40px;
+}
+.login_form .font{
+	font-size: 18px;
+	color: #130f40;
+	margin: 5px 0;
+}
+.login_form input{
+	height: 30px;
+	width: 250px;
+	padding: 0 5px;
+	font-size: 15px;
+	font-family: "Trebuchet MS";
+	outline: none;
+	opacity: 0.8;
+	border: 1px solid silver;
+}
+.login_form .font2{
+	margin-top: 30px;
+}
+.login_form button{
+	margin: 45px 0 30px 0 ;
+	margin-left: 28px;
+	padding:10px 0;
+	height: 45px;
+	width: 200px;
+	font-size: 20px;
+	color: white;
+	outline: none;
+	font-family: "Trebuchet MS";
+	border:none;
+	cursor: pointer;
+	font-weight: bold;
+	background: black;
+	border-radius: 3px;
+	transition: .5s;
+}
+.login_form button:hover{
+	background: black;
+}
+.login_form #email_error,
+.login_form #pass_error{
+	margin-top: 2px;
+	width: 200px;
+	font-size: 13px;
+	color: yellow;
+	text-align: center;
+	padding: 5px auto;
+	display: none;
+}
+
+a{
+	color: yellow;
+	text-decoration: none;
+	font-size: 15px;
+    font-family: "Trebuchet MS";
+}
+</style>
+
+<script>	//Validtion Code For Inputs
+
+var email = document.forms['form']['email'];
+var password = document.forms['form']['password'];
+
+var email_error = document.getElementById('email_error');
+var pass_error = document.getElementById('pass_error');
+
+email.addEventListener('textInput', email_Verify);
+password.addEventListener('textInput', pass_Verify);
+
+function validated(){
+	if (email.value.length < 9) {
+		email.style.border = "1px solid red";
+		email_error.style.display = "block";
+		email.focus();
+		return false;
+	}
+	if (password.value.length < 6) {
+		password.style.border = "1px solid red";
+		pass_error.style.display = "block";
+		password.focus();
+		return false;
+	}
+
+}
+function email_Verify(){
+	if (email.value.length >= 8) {
+		email.style.border = "1px solid silver";
+		email_error.style.display = "none";
+		return true;
+	}
+}
+function pass_Verify(){
+	if (password.value.length >= 5) {
+		password.style.border = "1px solid silver";
+		pass_error.style.display = "none";
+		return true;
+	}
+}
+</script>
+
+</body>
+</html>
